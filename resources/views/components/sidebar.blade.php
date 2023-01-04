@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
 
-    <a href="../../index3.html" class="brand-link">
+    <a href="/" class="brand-link">
         <img src="{{ asset('img/logo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
         <span class="brand-text font-weight-light">RSRW - UNIT SDM</span>
     </a>
@@ -29,7 +29,7 @@
 
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <li class="nav-item">
+            <li class="nav-item menu-open">
                 <a href="/" class="nav-link">
                     <i class="nav-icon fas fa-th"></i>
                     <p>
@@ -40,7 +40,7 @@
             </li>
             {{-- penilaian --}}
             <li class="nav-item">
-                <a href="{{ route('penilaian.index') }}" class="nav-link">
+                <a href="/penilaian/create" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Nilai Sekarang !!
@@ -78,7 +78,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('nilai.index') }}" class="nav-link">
+                        <a href="{{ route('penilaian.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Rekap Nilai</p>
                         </a>
@@ -114,7 +114,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('nilai.index') }}" class="nav-link">
+                        <a href="{{ route('penilaian.index') }}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Rekap Nilai</p>
                         </a>
@@ -126,7 +126,7 @@
             @if(auth()->user()->level=="superadmin")
             <li class="nav-item">
                 <a href="{{ route('user.index') }}" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
+                    <i class="nav-icon fas fa-user-alt"></i>
                     <p>
                         User Account
                         <span class="right badge badge-primary">superuser</span>

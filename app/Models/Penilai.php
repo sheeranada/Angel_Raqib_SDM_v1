@@ -18,4 +18,9 @@ class Penilai extends Model
     {
         return $this->belongsTo(Karyawan::class,'karyawan_id');
     }
+
+    public function penilaian()
+    {
+        return $this->hasMany(Penilaian::class);
+    }
 }

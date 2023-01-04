@@ -43,7 +43,7 @@
                 </li>
                 {{-- penilaian --}}
                 <li class="nav-item">
-                    <a href="{{ route('penilaian.index') }}" class="nav-link active">
+                    <a href="/penilaian/create" class="nav-link">
                         <i class="nav-icon fas fa-edit"></i>
                         <p>
                             Nilai Sekarang !!
@@ -51,92 +51,53 @@
                         </p>
                     </a>
                 </li>
-                            {{-- data karyawan --}}
-            @if(auth()->user()->level=="admin")
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Data Karyawan
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('karyawan.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List Karyawan</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('unit.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List Unit</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('penilai.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List Penilai</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('nilai.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Rekap Nilai</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            @elseif(auth()->user()->level=="superadmin")
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>
-                        Data Karyawan
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="{{ route('karyawan.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List Karyawan</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('unit.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List Unit</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('penilai.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>List Penilai</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('nilai.index') }}" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Rekap Nilai</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            @endif
-
-            @if(auth()->user()->level=="superadmin")
-            <li class="nav-item">
-                <a href="{{ route('logout') }}" class="nav-link">
-                    <i class="nav-icon fas fa-sign-out-alt"></i>
-                    <p>
-                        User Account
-                        <span class="right badge badge-primary">superuser</span>
-                    </p>
-                </a>
-            </li>
-            @endif
+                {{-- data karyawan --}}
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Data Karyawan
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('karyawan.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Karyawan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('unit.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Unit</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('penilai.index') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>List Penilai</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('penilaian.index') }}" class="nav-link active">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Rekap nilai</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                @if(auth()->user()->level=="superadmin")
+                <li class="nav-item">
+                    <a href="{{ route('user.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-user-alt"></i>
+                        <p>
+                            User Account
+                            <span class="right badge badge-primary">superuser</span>
+                        </p>
+                    </a>
+                </li>
+                @endif
                 <li class="nav-item">
                     <a href="{{ route('logout') }}" class="nav-link">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
@@ -152,7 +113,97 @@
     </div>
 
 </aside>
+{{-- content --}}
+<div class="content-wrapper">
 
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>REKAP PENILAIAN</h1>
+                </div>
+                <div class="col-sm-6">
+                    {{-- <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Blank Page</li>
+                    </ol> --}}
+                </div>
+            </div>
+        </div>
+    </section>
 
-@include('components.content')
+    <section class="content">
+        <a href="/penilaian/create" class="btn btn-dark mb-3"><i class="fas fa-edit"></i> NILAI SEKARANG</a>
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Tabel Rekap Penilaian</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>NO</th>
+                            <th>NAMA KARYAWAN</th>
+                            <th>JENIS KELAMIN</th>
+                            <th>UNIT / BAGIAN</th>
+                            <th>KODE PENILAI</th>
+                            <th>NAMA PENILAI</th>
+                            <th>PERIODE</th>
+                            <th>TOTAL SKOR</th>
+                            <th>PILIHAN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($penilaian as $key => $pn)
+                            <tr>
+                                <td>{{ ++$key }}</td>
+                                <td>{{ $pn->penilai->karyawan->nama_karyawan }}</td>
+                                <td>{{ $pn->penilai->karyawan->jkel }}</td>
+                                <td>{{ $pn->penilai->karyawan->unit->nama_unit }}</td>
+                                <td>{{ $pn->penilai->kode_penilai }}</td>
+                                <td>{{ $pn->penilai->nama_penilai }}</td>
+                                <td>{{ $pn->periode }}</td>
+                                <td>{{ $pn->skor1+$pn->skor2+
+                                        $pn->skor3+$pn->skor4+
+                                        $pn->skor5+$pn->skor6+
+                                        $pn->skor7+$pn->skor8 }}</td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group" aria-label="Small button group">
+                                        <a href="/penilaian/detail/{{ $pn->id }}" class="btn btn-success btn-sm">
+                                            <i class="fas fa-eye-slash"></i> DETAIL</a>
+                                        <a href="/penilaian/edit/{{ $pn->id }}" class="btn btn-warning btn-sm">
+                                            <i class="fas fa-pencil-alt"></i> EDIT</a>
+                                        <a href="/penilaian/destroy/{{ $pn->id }}" class="btn btn-danger btn-sm">
+                                            <i class="fas fa-trash-alt"></i> HAPUS</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+            </div>
+    </section>
+
+</div>
 @include('components.footer')
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true
+            , "lengthChange": false
+            , "autoWidth": false,
+
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true
+            , "lengthChange": false
+            , "searching": false
+            , "ordering": true
+            , "info": true
+            , "autoWidth": false
+            , "responsive": true
+        , });
+    });
+</script>

@@ -57,12 +57,23 @@ Route::middleware(['auth', 'checklevel:admin,superadmin'])->group(function () {
         Route::put('/penilai/{id}', 'update');
         Route::get('/penilai/destroy/{id}', 'destroy');
     });
-    Route::controller(NilaiController::class)->group(function () {
-        Route::get('/nilai', 'index')->name('nilai.index');
-    });
+    // Route::controller(NilaiController::class)->group(function () {
+    //     Route::get('/nilai', 'index')->name('nilai.index');
+    //     Route::get('/nilai/create', 'create');
+    //     Route::post('/nilai/store', 'store');
+    //     Route::get('/nilai/edit/{id}', 'edit');
+    //     Route::put('/nilai/{id}', 'update');
+    //     Route::get('/nilai/destroy/{id}', 'destroy');
+    // });
     Route::controller(PenilaianController::class)->group(function () {
         Route::get('/penilaian', 'index')->name('penilaian.index');
+        Route::get('/penilaian/edit/{id}', 'edit');
+        Route::get('/penilaian/detail/{id}', 'show');
+        Route::put('/penilaian/{id}', 'update');
+        Route::get('/penilaian/destroy/{id}', 'destroy');
     });
+    // Route::get('/','EmployeesController@index');
+    // Route::post('/employees/getEmployees/','EmployeesController@getEmployees')->name('employees.getEmployees');
 
 });
 
@@ -75,6 +86,15 @@ Route::middleware(['auth', 'checklevel:admin,user,superadmin'])->group(function 
     Route::controller(PenilaianController::class)->group(function () {
         Route::get('/penilaian', 'index')->name('penilaian.index');
     });
+    Route::controller(PenilaianController::class)->group(function () {
+        Route::get('/penilaian/create', 'create');
+        Route::get('/skor', 'skor');
+        Route::get('/skor/generate', 'generate');
+        Route::post('/penilaian/store', 'store');
+        Route::get('/penilaian/pilihan', 'pilihan');
+        Route::get('/penilaian/show_hasil', 'show_hasil');
+        Route::get('/penilaian/show_hapus/{id}', 'hapus');
+    });
 
 });
 
@@ -82,7 +102,11 @@ Route::middleware(['auth', 'checklevel:admin,user,superadmin'])->group(function 
 Route::middleware(['auth', 'checklevel:superadmin'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/user', 'index')->name('user.index');
+        Route::get('/user/create', 'create');
+        Route::post('/user/store', 'store')->name('user.store');
+        Route::get('/user/edit/{id}', 'edit');
+        Route::put('/user/{id}', 'update');
+        Route::get('/user/destroy/{id}', 'destroy');
     });
 
 });
-

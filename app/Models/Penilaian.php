@@ -11,14 +11,27 @@ class Penilaian extends Model
     protected $table = 'penilaian';
     protected $guarded = [];
     protected $fillable = [
-        'penilai_id','periode',
-        'skor1','catatan1',
-        'skor2','catatan2',
-        'skor3','catatan3',
-        'skor4','catatan4',
-        'skor5','catatan5',
-        'skor6','catatan6',
-        'skor7','catatan7',
-        'skor8','catatan8'
+        'penilai_id',
+        'periode',
+        'skor1',
+        'skor2',
+        'skor3',
+        'skor4',
+        'skor5',
+        'skor6',
+        'skor7',
+        'skor8',
+        'tanggal_penilaian',
+        'catatan_kesimpulan'
     ];
+
+    public function penilai()
+    {
+        return $this->belongsTo(Penilai::class,'penilai_id');
+    }
+
+    // public function karyawan()
+    // {
+    //     return $this->hasMany(Karyawan::class);
+    // }
 }

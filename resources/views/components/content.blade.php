@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Blank Page</h1>
+                    <h1>APLIKASI PENILAIAN KARYAWAN</h1>
                 </div>
                 <div class="col-sm-6">
                     {{-- <ol class="breadcrumb float-sm-right">
@@ -20,7 +20,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Title</h3>
+                <h3 class="card-title">Selamat datang {{ auth()->user()->name }}</h3>
                 {{-- <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -34,7 +34,7 @@
                 <div class="col-lg-6">
                     <h3>Selamat Datang di Angel-Raqib.app</h3>
                     <p>Silahkan memberikan penilaian secara objektif dan bijaksana</p>
-                    <a href="{{ route('penilaian.index') }}" class="btn btn-primary">NILAI SEKARANG</a>
+                    <a href="/penilaian/create" class="btn btn-primary">NILAI SEKARANG</a>
                 </div>
 
                 {{-- <div class="card-footer">
